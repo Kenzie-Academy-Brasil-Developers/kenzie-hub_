@@ -8,7 +8,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  margin: 10px 0 10px 0;
+  margin: 10px auto;
 
   h1 {
     margin-left: 5%;
@@ -28,6 +28,18 @@ const Header = styled.header`
 
       font-size: 12px;
       font-weight: bold;
+    }
+  }
+
+  @media (min-width: 769px) {
+    width: 30%;
+
+    h1 {
+      margin-left: 0;
+    }
+
+    a {
+      margin-right: 0;
     }
   }
 `;

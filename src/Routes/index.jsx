@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import App from "../App";
+import App from "../App.jsx";
 import Dashbord from "../Pages/Dashbord";
 import Login from "../Pages/Login";
 import NotFound from "../Pages/NotFound";

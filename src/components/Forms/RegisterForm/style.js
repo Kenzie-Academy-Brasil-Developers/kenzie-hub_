@@ -79,6 +79,11 @@ const FormRegisterStyle = styled.form`
   .on {
     background-color: var(--primary);
   }
+  @media (min-width: 769px) {
+    width: 30%;
+
+    padding-bottom: 3%;
+  }
 `;
 
 const Footer = styled.footer`
