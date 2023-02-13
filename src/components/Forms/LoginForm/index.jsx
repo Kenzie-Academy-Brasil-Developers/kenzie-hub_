@@ -55,7 +55,9 @@ const FormLogin = () => {
         />
         <p>{errors.password?.message}</p>
       </div>
-      <button type="submit">Entrar</button>
+      <button className="submit" type="submit">
+        Entrar
+      </button>
       <div className="container--register__button">
         <p>Ainda não possui uma conta</p>
         <Link to={"/cadastro"}>

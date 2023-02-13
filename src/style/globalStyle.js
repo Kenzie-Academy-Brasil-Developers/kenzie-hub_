@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 :root {
   --primary: #FF577F;
-  --primary-facus: #FF427F;
+  --primary-focus: #FF427F;
   --primary-negative: #59323F;
 
   --white: #F8F9FA;
@@ -20,6 +20,8 @@ const GlobalStyle = createGlobalStyle`
 body{
   background-color: var(--gray-4);
   color: var(--white);
+  
+  font-family: 'Inter', sans-serif;
 }
 
 .title {

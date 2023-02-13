@@ -1,12 +1,16 @@
 import FormLogin from "../../components/Forms/LoginForm/index.jsx";
-import Container from "./style.js";
+import { Container, Header } from "./style.js";
 
 const Login = () => {
   return (
-    <Container>
-      <h1 className="title">Kenzie Hub</h1>
-      <FormLogin />
-    </Container>
+    <>
+      <Header>
+        <h1 className="title">Kenzie Hub</h1>
+      </Header>
+      <Container>
+        <FormLogin />
+      </Container>
+    </>
   );
 };
 

@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
+import Div from "./style";
 
 const InputRegister = (
   { label, type, id, placeholder, error, ...rest },
   ref
 ) => {
   return (
-    <div>
+    <Div>
       <label htmlFor={id}>{label}</label>
       <input
         id={id}
@@ -15,7 +16,7 @@ const InputRegister = (
         {...rest}
       />
       {error ? <p>{error}</p> : null}
-    </div>
+    </Div>
   );
 };
 
