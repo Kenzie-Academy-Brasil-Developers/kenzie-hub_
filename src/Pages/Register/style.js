@@ -14,21 +14,19 @@ const Header = styled.header`
     margin-left: 5%;
   }
 
-  a {
+  button {
+    height: 30px;
+    width: 80px;
+
     margin-right: 5%;
 
-    button {
-      height: 30px;
-      width: 80px;
+    background-color: var(--gray-3);
+    color: var(--white);
 
-      background-color: var(--gray-3);
-      color: var(--white);
+    border-radius: 4px;
 
-      border-radius: 4px;
-
-      font-size: 12px;
-      font-weight: bold;
-    }
+    font-size: 12px;
+    font-weight: bold;
   }
 
   @media (min-width: 769px) {
@@ -38,7 +36,7 @@ const Header = styled.header`
       margin-left: 0;
     }
 
-    a {
+    button {
       margin-right: 0;
     }
   }

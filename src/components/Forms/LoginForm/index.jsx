@@ -60,9 +60,9 @@ const FormLogin = () => {
       </button>
       <div className="container--register__button">
         <p>Ainda não possui uma conta</p>
-        <Link to={"/cadastro"}>
-          <button type="button">Cadastre-se</button>
-        </Link>
+        <button onClick={() => navigate("/cadastro")} type="button">
+          Cadastre-se
+        </button>
       </div>
     </FormLoginStyle>
   );

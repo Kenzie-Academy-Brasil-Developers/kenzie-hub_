@@ -27,10 +27,8 @@ const FormRegister = () => {
       contact: data.contact,
       course_module: data.course_module,
     };
-    console.log(register, "data");
     try {
       const response = api.post("/users", register);
-      console.log(await response, "resposta api");
       navigate("/login");
     } catch (error) {
       console.error(error);

@@ -31,7 +31,6 @@ const ModalEditTechs = ({ setModalEditTechs, techEdit }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -44,7 +43,6 @@ const ModalEditTechs = ({ setModalEditTechs, techEdit }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

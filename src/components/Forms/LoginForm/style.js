@@ -81,16 +81,14 @@ const FormLoginStyle = styled.form`
       margin-top: 5%;
     }
 
-    a {
-      width: 100%;
-      button {
-        width: 100%;
+    width: 100%;
+    button {
+      width: 85%;
 
-        background-color: var(--gray-1);
-      }
-      button:focus {
-        background-color: var(--gray-2);
-      }
+      background-color: var(--gray-1);
+    }
+    button:focus {
+      background-color: var(--gray-2);
     }
   }
 
