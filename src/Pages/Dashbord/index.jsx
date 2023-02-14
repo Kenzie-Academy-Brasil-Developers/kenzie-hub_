@@ -33,34 +33,7 @@ const Dashbord = () => {
     navigate("/login");
   };
 
-  return (
-    <>
-      <header>
-        <h1 className="title">Kenzie Hub</h1>
-        <button onClick={logout}>Sair</button>
-      </header>
-      <main>
-        <section>
-          <h2>Olá, {user.name}</h2>
-          <p>{user.course_module}</p>
-        </section>
-        <h3>Tecnologias</h3>
-        <button onClick={() => setModalTechs(true)}>+</button>
-        <ListTechs
-          user={user}
-          setTechEdit={setTechEdit}
-          setModalEditTechs={setModalEditTechs}
-        />
-      </main>
-      {modalTechs && <ModalTechs setModalTechs={setModalTechs} />}
-      {modalEditTechs && (
-        <ModalEditTechs
-          setModalEditTechs={setModalEditTechs}
-          techEdit={techEdit}
-        />
-      )}
-    </>
-  );
+  return <></>;
 };
 
 export default Dashbord;
