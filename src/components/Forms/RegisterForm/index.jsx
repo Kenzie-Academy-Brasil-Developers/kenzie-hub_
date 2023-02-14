@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import InputRegister from "../../Inputs/InputRegister";
 import { useNavigate } from "react-router-dom";
 import api from "../../../API/login/api";
+import { toast } from "react-toastify";
 
 const FormRegister = () => {
   const navigate = useNavigate();
@@ -27,11 +28,19 @@ const FormRegister = () => {
       contact: data.contact,
       course_module: data.course_module,
     };
-    console.log(register, "data");
     try {
       const response = api.post("/users", register);
-      console.log(await response, "resposta api");
       navigate("/login");
+      toast.success("Cadastrado com sucesso!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error(error);
     }

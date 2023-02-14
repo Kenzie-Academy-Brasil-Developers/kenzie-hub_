@@ -29,7 +29,6 @@ const ModalTechs = ({ setModalTechs }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(await response);
     } catch (error) {}
   };
 

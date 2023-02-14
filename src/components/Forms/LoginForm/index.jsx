@@ -3,7 +3,8 @@ import FormLoginStyle from "./style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../../API/login/api";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const schema = yup.object({
   email: yup.string().required("Email obrigatório!"),
@@ -27,8 +28,32 @@ const FormLogin = () => {
       localStorage.setItem("@TOKEN", (await response).data.token);
       localStorage.setItem("@USERID", (await response).data.user.id);
       navigate(`/home/${(await response).data.user.name}`);
+      toast.success("Login efetuado com sucesso!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error(error);
+      if (
+        error.response.data.message === "Incorrect email / password combination"
+      ) {
+        toast.error("Email ou senha incorretos!", {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     }
   };
 
@@ -60,9 +85,9 @@ const FormLogin = () => {
       </button>
       <div className="container--register__button">
         <p>Ainda não possui uma conta</p>
-        <Link to={"/cadastro"}>
-          <button type="button">Cadastre-se</button>
-        </Link>
+        <button onClick={() => navigate("/cadastro")} type="button">
+          Cadastre-se
+        </button>
       </div>
     </FormLoginStyle>
   );
