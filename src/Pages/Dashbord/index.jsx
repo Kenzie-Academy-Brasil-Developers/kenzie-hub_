@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import api from "../../API/login/api.js";
 import ListTechs from "../../components/ListTechs/index.jsx";
 import ModalEditTechs from "../../components/Modal/ModalEditTechs/index.jsx";
@@ -18,19 +18,24 @@ const Dashbord = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const requestUser = async () => {
-      try {
-        const response = await api.get(`/users/${localUserId}`);
-        setUser(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    requestUser();
-  }, [!modalTechs || !techEdit]);
+    if (localToken) {
+      const requestUser = async () => {
+        try {
+          const response = await api.get(`/users/${localUserId}`);
+          setUser(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      requestUser();
+    } else {
+      navigate("/login");
+    }
+  }, []);
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERID");
     navigate("/login");
   };
 

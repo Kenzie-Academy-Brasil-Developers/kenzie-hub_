@@ -36,7 +36,7 @@ const Profile = styled.section`
 
   gap: 20px;
 
-  padding: 30px;
+  padding: 3% 5%;
 
   h2 {
     font-size: 1.125rem;

@@ -3,7 +3,7 @@ import FormLoginStyle from "./style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../../API/login/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const schema = yup.object({
@@ -85,9 +85,7 @@ const FormLogin = () => {
       </button>
       <div className="container--register__button">
         <p>Ainda não possui uma conta</p>
-        <button onClick={() => navigate("/cadastro")} type="button">
-          Cadastre-se
-        </button>
+        <Link to={"/cadastro"}>Cadastre-se</Link>
       </div>
     </FormLoginStyle>
   );
