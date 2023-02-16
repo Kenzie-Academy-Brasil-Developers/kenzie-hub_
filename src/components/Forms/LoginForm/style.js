@@ -44,7 +44,8 @@ const FormLoginStyle = styled.form`
     }
   }
 
-  button {
+  button,
+  a {
     height: 40px;
     width: 85%;
 
@@ -81,13 +82,18 @@ const FormLoginStyle = styled.form`
       margin-top: 5%;
     }
 
-    width: 100%;
-    button {
-      width: 85%;
+    a {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-decoration: none;
 
       background-color: var(--gray-1);
     }
-    button:focus {
+    a:focus {
       background-color: var(--gray-2);
     }
   }

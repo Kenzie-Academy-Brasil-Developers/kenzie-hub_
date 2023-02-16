@@ -1,64 +1,62 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../API/login/api.js";
+
 import ListTechs from "../../components/ListTechs/index.jsx";
 import ModalEditTechs from "../../components/Modal/ModalEditTechs/index.jsx";
-import ModalTechs from "../../components/Modal/ModalTechs";
+import ModalCreateTechs from "../../components/Modal/ModalCreateTechs";
+import { DivTechs, Header, Profile, SectionTechs } from "./style.js";
+import { TechContext } from "../../Providers/TechsContext.jsx";
+import toastify from "../../components/Toastify/toastify.js";
 
 const Dashbord = () => {
-  const localUserId = localStorage.getItem("@USERID");
-  const localToken = localStorage.getItem("@TOKEN");
-
-  const [user, setUser] = useState({});
-  const [modalTechs, setModalTechs] = useState(false);
-  const [modalEditTechs, setModalEditTechs] = useState(false);
-  const [techEdit, setTechEdit] = useState({});
+  const {
+    user,
+    modalCreateTechs,
+    setModalCreateTechs,
+    modalEditTechs,
+    requestUser,
+  } = useContext(TechContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const requestUser = async () => {
-      try {
-        const response = await api.get(`/users/${localUserId}`);
-        setUser(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    requestUser();
-  }, [!modalTechs || !techEdit]);
+    const localToken = localStorage.getItem("@TOKEN");
+
+    if (localToken) {
+      requestUser();
+    } else {
+      navigate("/login");
+    }
+  }, []);
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERID");
+    toastify("Você está desconectado agora!", "success");
     navigate("/login");
   };
 
   return (
     <>
-      <header>
+      <Header>
         <h1 className="title">Kenzie Hub</h1>
         <button onClick={logout}>Sair</button>
-      </header>
+      </Header>
       <main>
-        <section>
+        <Profile>
           <h2>Olá, {user.name}</h2>
           <p>{user.course_module}</p>
-        </section>
-        <h3>Tecnologias</h3>
-        <button onClick={() => setModalTechs(true)}>+</button>
-        <ListTechs
-          user={user}
-          setTechEdit={setTechEdit}
-          setModalEditTechs={setModalEditTechs}
-        />
+        </Profile>
+        <DivTechs>
+          <h3>Tecnologias</h3>
+          <button onClick={() => setModalCreateTechs(true)}>+</button>
+        </DivTechs>
+        <SectionTechs>
+          <ListTechs />
+        </SectionTechs>
       </main>
-      {modalTechs && <ModalTechs setModalTechs={setModalTechs} />}
-      {modalEditTechs && (
-        <ModalEditTechs
-          setModalEditTechs={setModalEditTechs}
-          techEdit={techEdit}
-        />
-      )}
+      {modalCreateTechs && <ModalCreateTechs />}
+      {modalEditTechs && <ModalEditTechs />}
     </>
   );
 };

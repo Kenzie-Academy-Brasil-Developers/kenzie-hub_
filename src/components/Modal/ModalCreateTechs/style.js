@@ -37,7 +37,20 @@ const ModalContainer = styled.div`
 
     svg {
       color: var(--gray-1);
+
       margin-right: 3%;
+
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .modal {
+      height: 342px;
+      width: 369px;
+    }
+    .title__modal {
+      height: 50px;
     }
   }
 `;

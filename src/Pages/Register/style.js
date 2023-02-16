@@ -14,9 +14,15 @@ const Header = styled.header`
     margin-left: 5%;
   }
 
-  button {
+  a {
     height: 30px;
     width: 80px;
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     margin-right: 5%;
 

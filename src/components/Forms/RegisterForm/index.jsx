@@ -3,11 +3,11 @@ import { FormRegisterStyle, Footer } from "./style";
 import schema from "./schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputRegister from "../../Inputs/InputRegister";
-import { useNavigate } from "react-router-dom";
-import api from "../../../API/login/api";
+import { useContext } from "react";
+import { UserFormContext } from "../../../Providers/UserFormsContext";
 
 const FormRegister = () => {
-  const navigate = useNavigate();
+  const { onSubmitRegisterForm } = useContext(UserFormContext);
 
   const {
     register,
@@ -18,26 +18,9 @@ const FormRegister = () => {
     mode: "onBlur",
   });
 
-  const onSubmitForm = async (data) => {
-    const register = {
-      email: data.email,
-      password: data.password,
-      name: data.name,
-      bio: data.bio,
-      contact: data.contact,
-      course_module: data.course_module,
-    };
-    try {
-      const response = api.post("/users", register);
-      navigate("/login");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <>
-      <FormRegisterStyle onSubmit={handleSubmit(onSubmitForm)}>
+      <FormRegisterStyle onSubmit={handleSubmit(onSubmitRegisterForm)}>
         <div className="form__title">
           <h2>Crie sua conta</h2>
           <p>Rápido e grátis, vamos nessa</p>

@@ -2,8 +2,9 @@ import { useForm } from "react-hook-form";
 import FormLoginStyle from "./style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import api from "../../../API/login/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserFormContext } from "../../../Providers/UserFormsContext";
 
 const schema = yup.object({
   email: yup.string().required("Email obrigatório!"),
@@ -11,7 +12,7 @@ const schema = yup.object({
 });
 
 const FormLogin = () => {
-  const navigate = useNavigate();
+  const { onSubmitLoginForm } = useContext(UserFormContext);
 
   const {
     register,
@@ -21,19 +22,8 @@ const FormLogin = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitForm = async (data) => {
-    try {
-      const response = api.post("/sessions", data);
-      localStorage.setItem("@TOKEN", (await response).data.token);
-      localStorage.setItem("@USERID", (await response).data.user.id);
-      navigate(`/home/${(await response).data.user.name}`);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <FormLoginStyle onSubmit={handleSubmit(onSubmitForm)}>
+    <FormLoginStyle onSubmit={handleSubmit(onSubmitLoginForm)}>
       <h2>Login</h2>
       <div className="container--email">
         <label htmlFor="email">Email</label>
@@ -60,9 +50,7 @@ const FormLogin = () => {
       </button>
       <div className="container--register__button">
         <p>Ainda não possui uma conta</p>
-        <button onClick={() => navigate("/cadastro")} type="button">
-          Cadastre-se
-        </button>
+        <Link to={"/cadastro"}>Cadastre-se</Link>
       </div>
     </FormLoginStyle>
   );

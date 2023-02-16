@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FormRegister from "../../components/Forms/RegisterForm";
 import { Container, Header } from "./style";
@@ -5,13 +6,19 @@ import { Container, Header } from "./style";
 const Register = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem("@TOKEN")) {
+      navigate("/home/user");
+    }
+  }, []);
+
   return (
     <>
       <Header>
         <h1 className="title">Kenzie Hub</h1>
-        <button onClick={() => navigate("/login")} type="button">
+        <Link to={"/login"} type="button">
           Voltar
-        </button>
+        </Link>
       </Header>
       <Container>
         <FormRegister />
