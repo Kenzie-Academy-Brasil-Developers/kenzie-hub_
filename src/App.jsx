@@ -1,9 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <Outlet />
+      <div className="App">Carregando...</div>;
+      <Navigate to={"/login"} />
     </>
   );
 };
