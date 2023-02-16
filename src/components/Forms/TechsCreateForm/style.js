@@ -38,6 +38,14 @@ const FormStyle = styled.form`
     font-size: 0.8125rem;
     font-weight: bold;
   }
+
+  @media (min-width: 769px) {
+    div input,
+    div select,
+    button {
+      height: 50px;
+    }
+  }
 `;
 
 export default FormStyle;

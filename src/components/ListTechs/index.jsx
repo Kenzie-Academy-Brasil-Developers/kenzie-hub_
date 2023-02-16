@@ -1,10 +1,16 @@
-const ListTechs = ({ user, setTechEdit, setModalEditTechs }) => {
+import { useContext } from "react";
+import { TechContext } from "../../Providers/TechsContext";
+import { LiStyle, UlStyle } from "./style";
+
+const ListTechs = () => {
+  const { user, setTechEdit, setModalEditTechs } = useContext(TechContext);
+
   return (
-    <section>
-      <ul>
+    <>
+      <UlStyle>
         {user.techs?.map((tec) => {
           return (
-            <li
+            <LiStyle
               onClick={() => {
                 setTechEdit(tec);
                 setModalEditTechs(true);
@@ -13,11 +19,11 @@ const ListTechs = ({ user, setTechEdit, setModalEditTechs }) => {
             >
               <h3>{tec.title}</h3>
               <p>{tec.status}</p>
-            </li>
+            </LiStyle>
           );
         })}
-      </ul>
-    </section>
+      </UlStyle>
+    </>
   );
 };
 

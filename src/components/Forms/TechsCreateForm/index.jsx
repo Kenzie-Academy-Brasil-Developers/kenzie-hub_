@@ -1,8 +1,30 @@
 import FormStyle from "./style";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import api from "../../../API/login/api";
+import * as yup from "yup";
+import { useContext } from "react";
+import { TechContext } from "../../../Providers/TechsContext";
 
-const TechCreateForm = ({ handleSubmit, onSubmitForm, register, errors }) => {
+const schema = yup.object({
+  title: yup.string().required("Tecnologia obrigatória!"),
+  status: yup.string().required("Status obrigatório!"),
+});
+
+const TechCreateForm = () => {
+  const { requestUser, setModalCreateTechs, onSubmitCreateForm } =
+    useContext(TechContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   return (
-    <FormStyle onSubmit={handleSubmit(onSubmitForm)}>
+    <FormStyle onSubmit={handleSubmit(onSubmitCreateForm)}>
       <div>
         <label htmlFor="techs">Nome</label>
         <input

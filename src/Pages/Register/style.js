@@ -42,7 +42,7 @@ const Header = styled.header`
       margin-left: 0;
     }
 
-    a {
+    button {
       margin-right: 0;
     }
   }

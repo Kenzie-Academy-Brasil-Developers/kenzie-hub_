@@ -8,6 +8,11 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
 
+  position: fixed;
+  top: 0;
+
+  background-color: var(--gray-4);
+
   h1 {
     margin-left: 5%;
   }
@@ -26,6 +31,15 @@ const Header = styled.header`
   button:focus {
     background-color: var(--gray-1);
   }
+
+  @media (min-width: 769px) {
+    h1 {
+      margin-left: 15%;
+    }
+    button {
+      margin-right: 15%;
+    }
+  }
 `;
 
 const Profile = styled.section`
@@ -36,7 +50,9 @@ const Profile = styled.section`
 
   gap: 20px;
 
-  padding: 3% 5%;
+  padding: 8% 5%;
+
+  margin-top: 80px;
 
   h2 {
     font-size: 1.125rem;
@@ -47,6 +63,51 @@ const Profile = styled.section`
     color: var(--gray-1);
 
     font-size: 0.875rem;
+  }
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 3% 15%;
+  }
+`;
+
+const DivTechs = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin: 20px auto;
+
+  h3 {
+    font-weight: bold;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+
+    font-size: 20px;
+
+    color: var(--white);
+    background-color: var(--gray-3);
+
+    border-radius: 4px;
+  }
+
+  button:focus {
+    background-color: var(--gray-2);
+  }
+
+  @media (min-width: 769px) {
+    h3 {
+      margin-left: 15%;
+    }
+    button {
+      margin-right: 15%;
+    }
   }
 `;
 
@@ -60,22 +121,18 @@ const SectionTechs = styled.section`
 
   min-height: 150px;
 
+  width: 95%;
+
+  margin: 0 auto;
+
   h3 {
     font-size: 1.125rem;
     font-weight: bold;
   }
 
-  p {
-    width: 85%;
-  }
-
   @media (min-width: 769px) {
-    p {
-      width: auto;
-
-      margin: 0 auto;
-    }
+    width: 70%;
   }
 `;
 
-export { Header, Profile, SectionTechs };
+export { Header, Profile, DivTechs, SectionTechs };
