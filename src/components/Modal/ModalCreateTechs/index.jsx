@@ -5,14 +5,14 @@ import { useContext } from "react";
 import { TechContext } from "../../../Providers/TechsContext";
 
 const ModalCreateTechs = () => {
-  const { setModalTechs } = useContext(TechContext);
+  const { setModalCreateTechs } = useContext(TechContext);
 
   return (
     <ModalContainer>
       <section className="modal">
         <div className="title__modal">
           <h3>Cadastrar Tecnologia</h3>
-          <MdOutlineClose onClick={() => setModalTechs(false)} />
+          <MdOutlineClose onClick={() => setModalCreateTechs(false)} />
         </div>
         <TechCreateForm />
       </section>

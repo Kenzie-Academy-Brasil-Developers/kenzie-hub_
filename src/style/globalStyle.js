@@ -30,6 +30,10 @@ body{
   font-size: 1rem;
   font-weight: bold;
 }
+
+button {
+  font-family: 'Inter', sans-serif;
+}
 `;
 
 export default GlobalStyle;

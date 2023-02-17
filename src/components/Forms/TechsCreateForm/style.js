@@ -25,6 +25,9 @@ const FormStyle = styled.form`
 
       border-radius: 3px;
     }
+    p {
+      font-size: 0.9375rem;
+    }
   }
 
   button {
